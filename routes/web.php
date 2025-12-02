@@ -6,6 +6,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProcessoController;
 use App\Http\Controllers\AudienciaController;
 use App\Http\Controllers\TarefaController;
+use App\Http\Controllers\ContratoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('audiencias', AudienciaController::class)->except(['show']);
 
     Route::resource('tarefas', TarefaController::class)->except(['show']);
+
+    Route::resource('contratos', ContratoController::class)->except(['show']);
+
 });
 
 require __DIR__.'/auth.php';
