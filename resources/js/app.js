@@ -14,7 +14,7 @@ if (cpfElement) {
     IMask(cpfElement, {
         mask: '000.000.000-00',
         prepare: function (str) {
-            return str.replace(/\D/g, ''); // remove tudo que NÃO é número
+            return str.replace(/\D/g, '');
         }
     });
 }
@@ -34,9 +34,22 @@ if (telefoneElement) {
     });
 }
 
+
 const emailElement = document.getElementById('email');
 if (emailElement) {
     IMask(emailElement, {
         mask: /^\S*@?\S*$/
+    });
+}
+
+
+const processoElement = document.getElementById('numero_processo');
+
+if (processoElement) {
+    IMask(processoElement, {
+        mask: '0000000-00.0000.0.00.0000',
+        prepare: function (str) {
+            return str.replace(/\D/g, ''); 
+        }
     });
 }
