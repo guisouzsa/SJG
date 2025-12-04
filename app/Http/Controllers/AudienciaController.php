@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Audiencias\CreateAudienciaRequest;
+use App\Http\Requests\Audiencias\UpdateAudienciaRequest;
 use Illuminate\Http\Request;
 use App\Models\Audiencia;
 use App\Models\Processo;
@@ -22,7 +24,7 @@ class AudienciaController extends Controller
         
     }
 
-    public function store(Request $request)
+    public function store(CreateAudienciaRequest $request)
     {
         Audiencia::create($request->only([
             'processo_id',
@@ -44,7 +46,7 @@ class AudienciaController extends Controller
         return view("audiencias.edit", compact("audiencia", "processos"));
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateAudienciaRequestt $request, string $id)
     {
         $audiencia = Audiencia::findOrFail($id);
 
