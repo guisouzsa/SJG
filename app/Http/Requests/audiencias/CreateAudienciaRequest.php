@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\audiencias;
+namespace App\Http\Requests\Audiencias;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,11 +14,12 @@ class CreateAudienciaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titulo'     => 'required|string|max:255',
-            'tipo'       => 'required|string|max:100',
-            'data_hora'  => 'required|date',
-            'local'      => 'required|string|max:255',
-            'descricao'  => 'nullable|string',
+            'processo_id'  => 'required|exists:processos,id',
+            'titulo'       => 'required|string|max:255',
+            'tipo'         => 'required|string|max:255',
+            'data_horario' => 'required|date',
+            'local'        => 'required|string|max:255',
+            'descricao'    => 'nullable|string',
         ];
     }
 }
