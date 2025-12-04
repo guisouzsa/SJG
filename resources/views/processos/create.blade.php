@@ -92,7 +92,8 @@
             <div>
                 <label for="numero_processo" class="block text-sm font-bold text-[#003262] mb-2">Número do Processo <span class="text-red-500">*</span></label>
                 <input type="text" name="numero_processo" id="numero_processo" value="{{ old('numero_processo') }}"
-                       class="w-full px-4 py-3 rounded-lg border-2 @error('numero_processo') border-red-500 bg-red-50 @else border-[#9EB9D4] @enderror focus:border-[#20729E] focus:ring-2 focus:ring-[#20729E]/20 transition-all duration-200 outline-none">
+                        class="w-full px-4 py-3 rounded-lg border-2 @error('numero_processo') border-red-500 bg-red-50 @else border-[#9EB9D4] @enderror focus:border-[#20729E] focus:ring-2 focus:ring-[#20729E]/20 transition-all duration-200 outline-none">
+
                 @error('numero_processo')
                     <div class="flex items-center mt-2 text-sm text-red-600">
                         <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
