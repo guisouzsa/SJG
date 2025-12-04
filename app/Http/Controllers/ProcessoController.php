@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Processos\CreateProcessoRequest;
+use App\Http\Requests\Processos\UpdateProcessoRequest;
 use Illuminate\Http\Request;
 use App\Models\Processo;
 use App\Models\Cliente;  
@@ -22,7 +24,7 @@ class ProcessoController extends Controller
         return view('processos.create', compact('clientes'));
     }
 
-    public function store(Request $request)
+    public function store(CreateProcessoRequest $request)
     {
         $dados = $request->only([
             'cliente_id',     
@@ -50,7 +52,7 @@ class ProcessoController extends Controller
         return view("processos.edit", compact("processo", "clientes"));
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateProcessoRequest $request, string $id)
     {
         $processo = Processo::findOrFail($id);
 
