@@ -16,7 +16,7 @@ class CreateContratoRequest extends FormRequest
         return [
             'titulo'         => 'required|string|max:255',
             'tipo'           => 'required|string|max:100',
-            'cliente_id'     => 'nullable|exists:clientes,id',
+            'cliente_id'     => 'required|exists:clientes,id',
             'data_assinatura'=> 'required|date',
             'data_vencimento'=> 'required|date|after_or_equal:data_assinatura',
             'valor'          => 'required|numeric|min:0',
