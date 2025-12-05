@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\tarefas\CreateTarefaRequest;
+use App\Http\Requests\tarefas\UpdateTarefaRequest;
 use App\Models\Tarefa;
 
 class TarefaController extends Controller
@@ -18,7 +20,7 @@ class TarefaController extends Controller
         return view("tarefas.create");
     }
 
-    public function store(Request $request)
+    public function store(CreateTarefaRequest $request)
     {
         Tarefa::create($request->only([
             'titulo',
@@ -41,7 +43,7 @@ class TarefaController extends Controller
         return view("tarefas.edit", compact("tarefa"));
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateTarefaRequest $request, string $id)
     {
         $tarefa = Tarefa::findOrFail($id);
 
