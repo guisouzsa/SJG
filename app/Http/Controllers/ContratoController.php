@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\contratos\CreateContratoRequest;
+use App\Http\Requests\contratos\UpdateContratoRequest;
 use App\Models\Contrato;
 use App\Models\Cliente;
 
@@ -20,7 +22,7 @@ class ContratoController extends Controller
         return view('contratos.create', compact('clientes'));
     }
 
-    public function store(Request $request)
+    public function store(CreateContratoRequest $request)
     {
         $dados = $request->only([
             'cliente_id',
@@ -50,7 +52,7 @@ class ContratoController extends Controller
         return view("contratos.edit", compact("contrato", "clientes"));
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateContratoRequest $request, string $id)
     {
         $contrato = Contrato::findOrFail($id);
 
