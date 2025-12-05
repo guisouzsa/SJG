@@ -6,7 +6,6 @@
 @section('content')
 <div class="bg-white rounded-xl shadow-lg border-l-4 border-[#7BAFD4]">
 
-    {{-- MENSAGENS DE ERRO GERAIS --}}
     @if ($errors->any())
         <div class="px-6 pt-6 pb-2">
             <div class="flex items-start space-x-3 mb-4">
@@ -33,7 +32,6 @@
         </div>
     @endif
 
-    {{-- MENSAGEM DE SUCESSO --}}
     @if(session('success'))
         <div class="px-6 pt-6 pb-2">
             <div class="flex items-start space-x-3 mb-4">
@@ -88,7 +86,6 @@
                 @enderror
             </div>
 
-            {{-- NÚMERO DO PROCESSO --}}
             <div>
                 <label for="numero_processo" class="block text-sm font-bold text-[#003262] mb-2">Número do Processo <span class="text-red-500">*</span></label>
                 <input type="text" name="numero_processo" id="numero_processo" value="{{ old('numero_processo') }}"
@@ -104,7 +101,6 @@
                 @enderror
             </div>
 
-            {{-- TIPO --}}
             <div>
                 <label for="tipo" class="block text-sm font-bold text-[#003262] mb-2">Tipo <span class="text-red-500">*</span></label>
                 <select name="tipo" id="tipo"
@@ -126,7 +122,6 @@
                 @enderror
             </div>
 
-            {{-- STATUS --}}
             <div>
                 <label for="status" class="block text-sm font-bold text-[#003262] mb-2">Status <span class="text-red-500">*</span></label>
                 <select name="status" id="status"
@@ -147,7 +142,6 @@
                 @enderror
             </div>
 
-            {{-- DESCRIÇÃO --}}
             <div class="md:col-span-2">
                 <label for="descricao" class="block text-sm font-bold text-[#003262] mb-2">Descrição</label>
                 <textarea name="descricao" id="descricao" rows="3"
@@ -162,7 +156,6 @@
                 @enderror
             </div>
 
-            {{-- DOCUMENTO --}}
             <div class="md:col-span-2">
                 <label class="block text-sm font-bold text-[#003262] mb-2">Documento</label>
                 <div class="flex items-center space-x-4">
