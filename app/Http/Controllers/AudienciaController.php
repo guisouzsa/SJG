@@ -46,7 +46,7 @@ class AudienciaController extends Controller
         return view("audiencias.edit", compact("audiencia", "processos"));
     }
 
-    public function update(UpdateAudienciaRequestt $request, string $id)
+    public function update(UpdateAudienciaRequest $request, string $id)
     {
         $audiencia = Audiencia::findOrFail($id);
 
