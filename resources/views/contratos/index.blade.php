@@ -31,20 +31,45 @@
                 @if(count($contratos) > 0)
                     @foreach($contratos as $contrato)
                         <tr class="hover:bg-[#F0F8FF] transition-colors duration-150">
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-[#003262]">{{ $contrato->id }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $contrato->titulo }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $contrato->tipo }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $contrato->cliente?->nomeCompleto ?? '' }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $contrato->data_assinatura->format('d/m/Y') }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{{ $contrato->data_vencimento->format('d/m/Y') }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">R$ {{ number_format($contrato->valor, 2, ',', '.') }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-[#003262]">
+                                {{ $contrato->id }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                {{ $contrato->titulo }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                {{ $contrato->tipo }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                {{ $contrato->cliente?->nomeCompleto ?? '' }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                {{ $contrato->data_assinatura ? date('d/m/Y', strtotime($contrato->data_assinatura)) : '' }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                {{ $contrato->data_vencimento ? date('d/m/Y', strtotime($contrato->data_vencimento)) : '' }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                R$ {{ number_format($contrato->valor, 2, ',', '.') }}
+                            </td>
+
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-3">
-                                <a href="{{ route('contratos.edit', $contrato->id) }}" class="text-[#6699CC] hover:text-[#20729E] font-semibold transition-colors duration-200">
+                                <a href="{{ route('contratos.edit', $contrato->id) }}" 
+                                   class="text-[#6699CC] hover:text-[#20729E] font-semibold transition-colors duration-200">
                                     Editar
                                 </a>
-                                <form action="{{ route('contratos.destroy', $contrato->id) }}" method="POST" class="inline" onsubmit="return confirm('Tem certeza que deseja excluir este contrato?');">
+
+                                <form action="{{ route('contratos.destroy', $contrato->id) }}" method="POST" class="inline"
+                                      onsubmit="return confirm('Tem certeza que deseja excluir este contrato?');">
                                     @csrf
                                     @method('DELETE')
+
                                     <button type="submit" class="text-red-500 hover:text-red-700 font-semibold transition-colors duration-200">
                                         Excluir
                                     </button>
