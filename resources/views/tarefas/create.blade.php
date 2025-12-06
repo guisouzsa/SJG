@@ -19,8 +19,10 @@
                     <ul class="space-y-2">
                         @foreach ($errors->all() as $error)
                             <li class="flex items-start text-sm text-red-600">
-                                <svg class="w-4 h-4 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                <svg class="w-4 h-4 mt-0.5 mr-2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" class="fill-red-600"/>
+                                    <path d="M12 7v5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="12" cy="16" r="1.5" fill="white"/>
                                 </svg>
                                 {{ $error }}
                             </li>
@@ -42,6 +44,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
+            {{-- TÍTULO --}}
             <div>
                 <label class="block text-sm font-bold text-[#003262] mb-2">
                     Título da tarefa <span class="text-red-500">*</span>
@@ -49,16 +52,40 @@
                 <input type="text" name="titulo" value="{{ old('titulo') }}"
                     class="w-full px-4 py-3 rounded-lg border-2 @error('titulo') border-red-500 bg-red-50 @else border-[#9EB9D4] @enderror focus:border-[#20729E] focus:ring-2 focus:ring-[#20729E]/20 outline-none"
                     placeholder="Ex.: Relatório mensal">
+
+                @error('titulo')
+                    <p class="flex items-center text-red-600 text-sm mt-1">
+                        <svg class="w-4 h-4 mr-1 flex-shrink-0" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" class="fill-red-600"/>
+                            <path d="M12 7v5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="16" r="1.5" fill="white"/>
+                        </svg>
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
 
+            {{-- DATA LIMITE --}}
             <div>
                 <label class="block text-sm font-bold text-[#003262] mb-2">
                     Data limite <span class="text-red-500">*</span>
                 </label>
                 <input type="date" name="data_limite" value="{{ old('data_limite') }}"
                     class="w-full px-4 py-3 rounded-lg border-2 @error('data_limite') border-red-500 bg-red-50 @else border-[#9EB9D4] @enderror focus:border-[#20729E] focus:ring-2 focus:ring-[#20729E]/20 outline-none">
+
+                @error('data_limite')
+                    <p class="flex items-center text-red-600 text-sm mt-1">
+                        <svg class="w-4 h-4 mr-1 flex-shrink-0" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" class="fill-red-600"/>
+                            <path d="M12 7v5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="16" r="1.5" fill="white"/>
+                        </svg>
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
 
+            {{-- STATUS --}}
             <div>
                 <label class="block text-sm font-bold text-[#003262] mb-2">
                     Status <span class="text-red-500">*</span>
@@ -70,20 +97,41 @@
                     <option value="Concluída" {{ old('status') == 'Concluída' ? 'selected' : '' }}>Concluída</option>
                     <option value="Atrasada" {{ old('status') == 'Atrasada' ? 'selected' : '' }}>Atrasada</option>
                 </select>
+
+                @error('status')
+                    <p class="flex items-center text-red-600 text-sm mt-1">
+                        <svg class="w-4 h-4 mr-1 flex-shrink-0" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" class="fill-red-600"/>
+                            <path d="M12 7v5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="16" r="1.5" fill="white"/>
+                        </svg>
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
 
+            {{-- DESCRIÇÃO --}}
             <div class="md:col-span-2">
-                <label class="block text-sm font-bold text-[#003262] mb-2">
-                    Descrição
-                </label>
+                <label class="block text-sm font-bold text-[#003262] mb-2">Descrição</label>
                 <textarea name="descricao" rows="3"
                     class="w-full px-4 py-3 rounded-lg border-2 @error('descricao') border-red-500 bg-red-50 @else border-[#9EB9D4] @enderror focus:border-[#20729E] focus:ring-2 focus:ring-[#20729E]/20 outline-none resize-none"
                     placeholder="Detalhes da tarefa (opcional)">{{ old('descricao') }}</textarea>
+
+                @error('descricao')
+                    <p class="flex items-center text-red-600 text-sm mt-1">
+                        <svg class="w-4 h-4 mr-1 flex-shrink-0" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" class="fill-red-600"/>
+                            <path d="M12 7v5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="12" cy="16" r="1.5" fill="white"/>
+                        </svg>
+                        {{ $message }}
+                    </p>
+                @enderror
             </div>
 
         </div>
 
-        {{-- Ações --}}
+        {{-- AÇÕES --}}
         <div class="flex items-center justify-end space-x-4 mt-8 pt-6 border-t border-[#9EB9D4]/30">
             <a href="{{ route('tarefas.index') }}" 
                 class="px-6 py-3 rounded-lg font-semibold text-[#6699CC] border-2 border-[#9EB9D4] hover:bg-[#F0F8FF] transition-all">
