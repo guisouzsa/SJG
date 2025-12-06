@@ -5,7 +5,6 @@
 
 @section('content')
 <div class="bg-white rounded-xl shadow-lg border-l-4 border-[#7BAFD4]">
-    <!-- Header -->
     <div class="px-6 py-5 border-b border-[#9EB9D4]/30">
         <div class="flex justify-between items-center">
             <div>
@@ -22,7 +21,6 @@
         </div>
     </div>
 
-    <!-- Tabela -->
     <div class="overflow-x-auto">
         <table class="min-w-full divide-y divide-[#9EB9D4]/30">
             <thead class="bg-gradient-to-r from-[#F0F8FF] to-white">

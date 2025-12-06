@@ -6,7 +6,6 @@
 @section('content')
 <div class="bg-white rounded-xl shadow-lg border-l-4 border-[#7BAFD4]">
 
-    {{-- MENSAGENS DE ERRO GERAIS - SEM CAIXA --}}
     @if ($errors->any())
         <div class="px-6 pt-6 pb-2">
             <div class="flex items-start space-x-3 mb-4">
@@ -33,7 +32,6 @@
         </div>
     @endif
 
-    {{-- MENSAGEM DE SUCESSO --}}
     @if(session('success'))
         <div class="px-6 pt-6 pb-2">
             <div class="flex items-start space-x-3 mb-4">
@@ -68,7 +66,6 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            {{-- NOME --}}
             <div class="md:col-span-2">
                 <label for="nomeCompleto" class="block text-sm font-bold text-[#003262] mb-2">
                     Nome Completo <span class="text-red-500">*</span>
@@ -89,7 +86,6 @@
                 @enderror
             </div>
 
-            {{-- CPF/CNPJ --}}
             <div>
                 <label for="cpf_Cnpj" class="block text-sm font-bold text-[#003262] mb-2">
                     CPF/CNPJ <span class="text-red-500">*</span>
@@ -110,7 +106,6 @@
                 @enderror
             </div>
 
-            {{-- TELEFONE --}}
             <div>
                 <label for="telefone" class="block text-sm font-bold text-[#003262] mb-2">
                     Telefone <span class="text-red-500">*</span>
@@ -131,7 +126,6 @@
                 @enderror
             </div>
 
-            {{-- EMAIL --}}
             <div class="md:col-span-2">
                 <label for="email" class="block text-sm font-bold text-[#003262] mb-2">
                     Email <span class="text-red-500">*</span>
@@ -152,7 +146,6 @@
                 @enderror
             </div>
 
-            {{-- ENDEREÇO --}}
             <div class="md:col-span-2">
                 <label for="endereco" class="block text-sm font-bold text-[#003262] mb-2">Endereço</label>
                 <textarea name="endereco" 
