@@ -30,7 +30,7 @@ class ClienteController extends Controller
             'endereco'
         ]));
 
-        return redirect()->route('clientes.index')->with('success', 'Cliente cadastrado com sucesso!');
+        return redirect()->route('clientes.index')->with('created', true);
     }
 
     public function edit(string $id)
@@ -50,7 +50,8 @@ class ClienteController extends Controller
             'endereco'
         ]));
 
-        return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso!');
+        return redirect()->route('clientes.index')->with('updated', true);
+
     }
 
     public function destroy(string $id)
@@ -58,6 +59,6 @@ class ClienteController extends Controller
         $cliente = Cliente::findOrFail($id);
         $cliente->delete();
 
-        return redirect()->route('clientes.index')->with('success', 'Cliente excluído com sucesso!');
+        return redirect()->route('clientes.index')->with('deleted', true);
     }
 }
