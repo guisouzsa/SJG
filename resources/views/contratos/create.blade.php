@@ -109,9 +109,17 @@
                 <label for="tipo" class="block text-sm font-bold text-[#003262] mb-2">
                     Tipo <span class="text-red-500">*</span>
                 </label>
-                <input type="text" name="tipo" id="tipo" value="{{ old('tipo') }}"
-                       class="w-full px-4 py-3 rounded-lg border-2 @error('tipo') border-red-500 bg-red-50 @else border-[#9EB9D4] @enderror focus:border-[#20729E] focus:ring-2 focus:ring-[#20729E]/20 transition-all duration-200 outline-none"
-                       placeholder="Digite o tipo do contrato">
+                <select name="tipo" id="tipo"
+                        class="w-full px-4 py-3 rounded-lg border-2 @error('tipo') border-red-500 bg-red-50 @else border-[#9EB9D4] @enderror focus:border-[#20729E] focus:ring-2 focus:ring-[#20729E]/20 transition-all duration-200 outline-none">
+                    <option value="">Selecione</option>
+                    <option value="Honorários" {{ old('tipo') == 'Honorários' ? 'selected' : '' }}>Contrato de Honorários</option>
+                    <option value="PrestacaoServicos" {{ old('tipo') == 'PrestacaoServicos' ? 'selected' : '' }}>Contrato de Prestação de Serviços</option>
+                    <option value="Exito" {{ old('tipo') == 'Exito' ? 'selected' : '' }}>Contrato de Êxito (Quota Litis)</option>
+                    <option value="Mensalidade" {{ old('tipo') == 'Mensalidade' ? 'selected' : '' }}>Contrato de Mensalidade</option>
+                    <option value="Consultoria" {{ old('tipo') == 'Consultoria' ? 'selected' : '' }}>Contrato de Consultoria Jurídica</option>
+                    <option value="Parceria" {{ old('tipo') == 'Parceria' ? 'selected' : '' }}>Contrato de Parceria</option>
+                    <option value="Assessoria" {{ old('tipo') == 'Assessoria' ? 'selected' : '' }}>Contrato de Assessoria Jurídica</option>
+                </select>
                 @error('tipo')
                     <div class="flex items-center mt-2 text-sm text-red-600">
                         <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -121,7 +129,6 @@
                     </div>
                 @enderror
             </div>
-
             <div>
                 <label for="data_assinatura" class="block text-sm font-bold text-[#003262] mb-2">
                     Data de Assinatura <span class="text-red-500">*</span>
