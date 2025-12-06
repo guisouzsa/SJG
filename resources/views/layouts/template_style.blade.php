@@ -53,6 +53,77 @@
         @yield('content')
     </main>
 
-    
+
+
+    @if(session('created'))
+    <div id="modal-created" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+        <div class="bg-[#003264] text-white w-[420px] p-6 rounded-xl shadow-2xl animate-zoom">
+            <h2 class="text-xl font-semibold mb-3">Cadastrado com sucesso</h2>
+            <p class="text-sm leading-normal mb-5">
+                Seu cadastro foi salvo no sistema. <br>
+                Clique no botão abaixo para retornar e continuar utilizando o sistema normalmente.
+            </p>
+
+            <button onclick="document.getElementById('modal-created').remove()"
+                    class="w-full bg-white text-[#003264] font-semibold py-2 rounded-lg shadow hover:bg-gray-100">
+                OK
+            </button>
+        </div>
+
+    </div>
+    @endif
+
+
+    @if(session('updated'))
+    <div id="modal-updated" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+        <div class="bg-[#003264] text-white w-[420px] p-6 rounded-xl shadow-2xl animate-zoom">
+            <h2 class="text-xl font-semibold mb-3">Atualizado com sucesso</h2>
+            <p class="text-sm leading-normal mb-5">
+                As informações foram alteradas corretamente. <br>
+                Você pode seguir usando o sistema normalmente clicando no botão abaixo.
+            </p>
+
+            <button onclick="document.getElementById('modal-updated').remove()"
+                    class="w-full bg-white text-[#003264] font-semibold py-2 rounded-lg shadow hover:bg-gray-100">
+                OK
+            </button>
+        </div>
+
+    </div>
+    @endif
+
+
+    @if(session('deleted'))
+    <div id="modal-deleted" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+        <div class="bg-[#003264] text-white w-[420px] p-6 rounded-xl shadow-2xl animate-zoom">
+            <h2 class="text-xl font-semibold mb-3">Deletado com sucesso</h2>
+            <p class="text-sm leading-normal mb-5">
+                O registro foi removido do sistema. <br>
+                Clique em OK para retornar à tela anterior.
+            </p>
+
+            <button onclick="document.getElementById('modal-deleted').remove()"
+                    class="w-full bg-white text-[#003264] font-semibold py-2 rounded-lg shadow hover:bg-gray-100">
+                OK
+            </button>
+        </div>
+
+    </div>
+    @endif
+
+
+    <style>
+        @keyframes zoom {
+            from { opacity: 0; transform: scale(0.9); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+        .animate-zoom {
+            animation: zoom .25s ease-out;
+        }
+    </style>
+
 </body>
 </html>

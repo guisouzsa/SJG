@@ -89,7 +89,7 @@
                 <label for="tipo" class="block text-sm font-bold text-[#003262] mb-2">Tipo <span class="text-red-500">*</span></label>
                 <select name="tipo" id="tipo"
                         class="w-full px-4 py-3 rounded-lg border-2 @error('tipo') border-red-500 bg-red-50 @else border-[#9EB9D4] @enderror focus:border-[#20729E] focus:ring-2 focus:ring-[#20729E]/20 transition-all duration-200 outline-none">
-                    <option value="">Selecione o tipo...</option>
+                    <option value="">Selecione</option>
                     <option value="Civil" {{ old('tipo') == 'Civil' ? 'selected' : '' }}>Processo Civil</option>
                     <option value="Penal" {{ old('tipo') == 'Penal' ? 'selected' : '' }}>Processo Penal</option>
                     <option value="Trabalhista" {{ old('tipo') == 'Trabalhista' ? 'selected' : '' }}>Processo Trabalhista</option>
@@ -103,7 +103,7 @@
                 <label for="status" class="block text-sm font-bold text-[#003262] mb-2">Status <span class="text-red-500">*</span></label>
                 <select name="status" id="status"
                         class="w-full px-4 py-3 rounded-lg border-2 @error('status') border-red-500 bg-red-50 @else border-[#9EB9D4] @enderror focus:border-[#20729E] focus:ring-2 focus:ring-[#20729E]/20 transition-all duration-200 outline-none">
-                    <option value="">Selecione o status...</option>
+                    <option value="">Selecione</option>
                     <option value="Novo" {{ old('status') == 'Novo' ? 'selected' : '' }}>Novo</option>
                     <option value="Pronto" {{ old('status') == 'Pronto' ? 'selected' : '' }}>Pronto</option>
                     <option value="Em execução" {{ old('status') == 'Em execução' ? 'selected' : '' }}>Em execução</option>
