@@ -87,14 +87,24 @@
             </div>
 
             <div>
-                <label for="numero_processo" class="block text-sm font-bold text-[#003262] mb-2">Número do Processo <span class="text-red-500">*</span></label>
-                <input type="text" name="numero_processo" id="numero_processo" value="{{ old('numero_processo') }}"
-                        class="w-full px-4 py-3 rounded-lg border-2 @error('numero_processo') border-red-500 bg-red-50 @else border-[#9EB9D4] @enderror focus:border-[#20729E] focus:ring-2 focus:ring-[#20729E]/20 transition-all duration-200 outline-none">
+                <label for="numero_processo" class="block text-sm font-bold text-[#003262] mb-2">
+                    Número do Processo <span class="text-red-500">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    name="numero_processo"
+                    id="numero_processo"
+                    value="{{ old('numero_processo', $processo->numero_processo ?? '') }}"
+                    class="w-full px-4 py-3 rounded-lg border-2 @error('numero_processo') border-red-500 bg-red-50 @else border-[#9EB9D4] @enderror focus:border-[#20729E] focus:ring-2 focus:ring-[#20729E]/20 transition-all duration-200 outline-none"
+                >
 
                 @error('numero_processo')
                     <div class="flex items-center mt-2 text-sm text-red-600">
                         <svg class="w-4 h-4 mr-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                clip-rule="evenodd"/>
                         </svg>
                         {{ $message }}
                     </div>
