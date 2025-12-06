@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('tipo');     
             $table->string('status');    
             $table->text('descricao');  
-            $table->string('documento');
+            $table->string('documento')->nullable();
             $table->timestamps();
         });
     }
