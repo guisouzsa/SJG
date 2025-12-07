@@ -41,7 +41,7 @@ class ProcessoController extends Controller
 
         Processo::create($dados);
 
-        return redirect()->route('processos.index')->with('success', 'Processo cadastrado com sucesso!');
+        return redirect()->route('processos.index')->with('created', true);
     }
 
     public function edit(string $id)
@@ -71,7 +71,7 @@ class ProcessoController extends Controller
 
         $processo->update($dados);
 
-        return redirect()->route('processos.index')->with('success', 'Processo atualizado com sucesso!');
+        return redirect()->route('processos.index')->with('updated', true);
     }
 
     public function destroy(string $id)
@@ -79,6 +79,6 @@ class ProcessoController extends Controller
         $processo = Processo::findOrFail($id);
         $processo->delete();
 
-        return redirect()->route('processos.index')->with('success', 'Processo excluído com sucesso!');
+        return redirect()->route('processos.index')->with('deleted', true);
     }
 }
