@@ -29,7 +29,7 @@ class TarefaController extends Controller
             'descricao'
         ]));
 
-        return redirect()->route('tarefas.index')->with('success', 'Tarefa cadastrada com sucesso!');
+        return redirect()->route('tarefas.index')->with('updated', true);
     }
 
     public function show(string $id)
@@ -49,7 +49,7 @@ class TarefaController extends Controller
 
         $tarefa->update($request->all());
 
-        return redirect()->route('tarefas.index')->with('success', 'Tarefa atualizada com sucesso!');
+        return redirect()->route('tarefas.index')->with('updated', true);
     }
 
     public function destroy(string $id)
@@ -58,6 +58,6 @@ class TarefaController extends Controller
 
         $tarefa->delete();
 
-        return redirect()->route('tarefas.index')->with('success', 'Tarefa excluída com sucesso!');
+        return redirect()->route('tarefas.index')->with('deleted', true);
     }
 }
