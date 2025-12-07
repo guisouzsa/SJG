@@ -10,7 +10,7 @@ class Audiencia extends Model
         'processo_id',
         'titulo',
         'tipo',
-        'data_horario',
+        'data_horario' => 'datetime',
         'local',
         'descricao',
     ];
@@ -19,4 +19,9 @@ class Audiencia extends Model
     {
         return $this->belongsTo(Processo::class);
     }
+
+    protected $casts = [
+        'data_horario' => 'datetime',
+    ];
 }
+
