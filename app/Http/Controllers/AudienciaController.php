@@ -35,7 +35,7 @@ class AudienciaController extends Controller
             'descricao'
         ]));
 
-        return redirect()->route('audiencias.index')->with('success', 'Audiência cadastrada com sucesso!');
+        return redirect()->route('audiencias.index')->with('created', true);
     }
 
     public function edit(string $id)
@@ -59,7 +59,7 @@ class AudienciaController extends Controller
             'descricao'
         ]));
 
-        return redirect()->route('audiencias.index')->with('success', 'Audiência atualizada com sucesso!');
+        return redirect()->route('audiencias.index')->with('updated', true);
     }
 
     public function destroy(string $id)
@@ -67,6 +67,6 @@ class AudienciaController extends Controller
         $audiencia = Audiencia::findOrFail($id);
         $audiencia->delete();
 
-        return redirect()->route('audiencias.index')->with('success', 'Audiência excluída com sucesso!');
+        return redirect()->route('audiencias.index')->with('deleted', true);
     }
 }
