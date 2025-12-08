@@ -24,6 +24,7 @@
                         <a href="{{ route('processos.index') }}" class="px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all duration-200 text-sm">Processos</a>
                         <a href="{{ route('audiencias.index') }}" class="px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all duration-200 text-sm">Audiências</a>
                         <a href="{{ route('tarefas.index') }}" class="px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all duration-200 text-sm">Tarefas</a>
+                        <a href="{{ route('processos.index') }}" class="px-4 py-2 text-white hover:bg-white/10 rounded-lg font-medium transition-all duration-200 text-sm">Processos</a>
                     </nav>
                 </div>
                 <div class="flex items-center space-x-4">
