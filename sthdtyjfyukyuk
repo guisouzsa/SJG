@@ -1,0 +1,105 @@
+[33mb46aff8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m fix(contrato): envia flags de sessão created/updated/deleted
+[33m5608755[m fix(tarefa): envia flags de sessão created/updated/deleted
+[33m3d60d19[m fix(audiencia): envia flags de sessão created/updated/deleted
+[33m0c078c9[m fix(processo): envia flags de sessão created/updated/deleted
+[33m02f1c18[m feat(clientes): adicionados modais de feedback visual para ações CRUD
+[33md7ea92b[m refactor(clientes): adicionadas flags de sessão para sucesso
+[33m7201512[m fix(migration): adiciona nullable ao campo documento na tabela processos para evitar erro de valor obrigatório.
+[33mcedefe5[m style(processos): adiciona placeholders em todos os campos para melhorar a visibilidade e indicar o conteúdo que deve ser preenchido
+[33mbc1efed[m style(contratos): melhora os campos clientes_id e tipo
+[33m8730a47[m fix(processos): corrige o edit para preencher os campos com as informações anteriores, pois em edição os dados precisam aparecer.
+[33mb2168a9[m style(tarefas): adiciona o erro de campo não preenchido abaixo de cada campo com a exclamação de fundo vermelho.
+[33m3187ec5[m fix(contratos): torna o o cliente obrigatório nos Formrequest do create e edit
+[33m9c9ac0e[m refactor(contratos): utiliza FormRequest no controller
+[33me3cc68d[m fix(contratos): tira o formt da data corrigindo o bug
+[33m089445e[m feat(contratos): adiciona tratamento de campos não preenchidos com Formrequest
+[33m9d65e27[m feat(contratos): adiciona tratamento de campos não preenchidos
+[33m36faf46[m refactor(contratos): utiliza FormRequest no controller
+[33m1652b85[m style(tarefas): tira o '--' dos selecionar
+[33m0e6489c[m style(processos): remove o '--' dos seleciones
+[33m763b2fd[m refactor(tarefas): utiliza FormRequest no controller
+[33m5c77aa0[m feat(tarefas): adiciona tratamento de erros na tela de edição
+[33m19d9892[m feat(tarefas): adiciona tratamento de erros na tela de criação
+[33m374366a[m feat: implementa máscara CNJ no app.js para número de processo
+[33m948674c[m feat(Processo): adiciona campo de Número do Processo com máscara nas views
+[33mda256d1[m feat: exibir erros gerais e erros por campo nas views existentes
+[33m5a86de4[m refactor: controller atualizado para uso correto dos FormRequests
+[33md1b7253[m refactor: atualizar FormRequests de processos
+[33m988d7f8[m feat: exibir erros gerais e erros por campo nas views existentes
+[33m01a7eac[m refactor: atualizar controllers para usar CreateClienteRequest e UpdateClienteRequest
+[33m953b3a6[m fix: corrigir validação para campo data_horario nos FormRequests
+[33ma85b8dc[m chore: remoção de algumas tags para melhor mapeamento do código
+[33mfbffb8f[m feat(contratos): adicionar UpdateContratoRequest
+[33m770de66[m feat(contratos): adicionar CreateContratoRequest
+[33mcf7c661[m feat(tarefas): adicionar UpdateTarefaRequest
+[33mf39bf4e[m feat(tarefas): adicionar CreateTarefaRequest
+[33mb9806b0[m feat(audiencias): adicionar UpdateAudienciaRequest
+[33mebb2a17[m feat(audiencias): adicionar CreateAudienciaRequest
+[33m9c91014[m feat(processos): adicionar UpdateProcessoRequest
+[33m1d2263b[m feat(processos): adicionar CreateProcessoRequest
+[33m58bb0a0[m fix: corrigir máscara de CPF e bloquear caracteres não numéricos
+[33mcfca3ea[m feat: adicionar iMask ao projeto
+[33m58df4c2[m feat: adicionar dependência imask
+[33mfac16c4[m feat: adicionar máscaras com iMask
+[33m05126f7[m chore: atualizar histórico para limpar contributors
+[33m27a5c71[m style: atualizar navigation com logo SJG
+[33mc16a995[m feat: integrar estatísticas dinâmicas na dashboard
+[33m4041043[m feat(contratos): registrar rotas resource de contratos
+[33m334b051[m feat(contratos): adicionar views (create, edit, index) com layout padronizado
+[33mf4b3db3[m feat(contratos): criar migration da tabela contratos
+[33m55f7f3d[m feat(contratos): criar model Contrato
+[33m7061564[m feat(contratos): adicionar controller de contratos com CRUD completo
+[33m6c90212[m feat(validation): adicionar traduções de mensagens dos FormRequests
+[33m19454d6[m feat(clientes): exibir mensagens de erro no formulário de edição
+[33m2363f0f[m feat(clientes): exibir mensagens de erro no formulário de criação
+[33mc687e78[m feat(clientes): adicionar validações de cadastro e edição nos FormRequests
+[33mb57a1e5[m refactor(clientes): aplicar FormRequest no controller e corrigir importações
+[33m37d0fb5[m style(layout): adicionar template base para todas as views
+[33md43b9f1[m style(tarefas): estilizar views do CRUD de Tarefas
+[33m2f696a5[m style(audiencias): estilizar views do CRUD de Audiências
+[33mf1ef4f9[m style(processos): estilizar views do CRUD de Processos
+[33m5575473[m style(clientes): estilizar views do CRUD de Clientes
+[33m5cc3e52[m feat: registrar rota para dashboard
+[33m3ff858e[m style: ajustar layout da view dashboard
+[33ma23f98b[m feat: adicionar lógica ao DashboardController
+[33mbe187a7[m feat: melhorias no layout
+[33m584cf5d[m build: ajustar versões do TailwindCSS e plugin do Vite
+[33m9ee41b3[m feat(ClienteController): ajustar controlador para integração com processos relacionados
+[33md9d17f7[m feat(AudienciaController): implementar vínculo de audiência com processo e exibição do cliente
+[33m762732e[m feat(ProcessoController): adicionar relacionamento cliente → processo e atualizar lógica do CRUD
+[33m1b73083[m feat(views/audiencias): select de processos e exibição de processo+cliente
+[33m0277065[m feat(views/processos): adicionar select de clientes e exibir cliente vinculado na listagem
+[33mc9a499a[m feat(migrations): adicionar chaves estrangeiras cliente_id e processo_id
+[33m1c4c5be[m feat(models): implementar relacionamentos entre Cliente, Processo e Audiencia
+[33m6afb34d[m style(dashboard): Melhora o style da pagina principal.
+[33m03b6150[m feat(view): adicionar link para tarefas na dashboard
+[33m161ac33[m Rotas: registrar rotas de tarefas
+[33m4c6bdf7[m Views: adicionar telas de tarefas
+[33md2fdd8d[m Migrations: criar tabela tarefas
+[33mf9d1b80[m Models: adicionar model Tarefa
+[33m3cd034a[m Controllers: adicionar TarefaController
+[33m0a65b0d[m feat(view): adicionar link para audiências na dashboard
+[33mbabf9b5[m feat: registrar rotas de audiências
+[33mc53d7f5[m feat: adicionar views de audiências
+[33m7d91193[m feat: criar migration de audiências
+[33mded15d0[m feat: criar model de audiências
+[33m3434b0c[m feat: adicionar controller de audiências
+[33m30a4846[m feat: adicionar controller de audiências
+[33mded633e[m docs(readme): atualizar documentação com novos módulos e ajustes
+[33mbb4ef9d[m Revise README for improved content and structuredocs(readme): atualizar documentação com novos módulos e ajustes
+[33m45f1722[m feat(view): adicionar link para processos na dashboard
+[33ma9d8c76[m refactor(view): remover dependência do Bootstrap na listagem de clientes
+[33maf1bba3[m feat(route): registrar rotas de processos com resource
+[33m13a07de[m feat(view): adicionar página de listagem de processos
+[33m16e42f5[m feat(view): adicionar página de edição de processos
+[33m7d9cdf7[m feat(view): adicionar página de criação de processos
+[33m9d6ab06[m feat(processo): adicionar migration e model de processos
+[33mb21eb63[m feat(controller): adicionar ProcessoController com operações CRUD
+[33m6c325f2[m refactor: substitui dashboard SJG pelo layout padrão do Laravel Breeze
+[33mc747149[m feat: implementação do módulo de gerenciamento de clientes
+[33mff53b1a[m feat: adiciona autenticação Laravel Breeze
+[33mc03b2db[m docs: atualização do README.md com informações do SJG
+[33m6c592c1[m docs: atualizar README com descrição das funcionalidades, melhorias nas descrições e linguagem mais clara
+[33m875f353[m docs: atualizar README com descrição das funcionalidades, melhorias nas descrições e linguagem mais clara
+[33m8ebcbe9[m Update README.md
+[33m72f0276[m chore: inicialização do projeto Laravel com estrutura básica e dependências

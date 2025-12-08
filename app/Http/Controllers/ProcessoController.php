@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Processos\CreateProcessoRequest;
-use App\Http\Requests\Processos\UpdateProcessoRequest;
+use App\Http\Requests\processos\CreateProcessoRequest;
+use App\Http\Requests\processos\UpdateProcessoRequest;
 use Illuminate\Http\Request;
 use App\Models\Processo;
 use App\Models\Cliente;  

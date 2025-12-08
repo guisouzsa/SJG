@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Audiencias\CreateAudienciaRequest;
-use App\Http\Requests\Audiencias\UpdateAudienciaRequest;
+use App\Http\Requests\audiencias\CreateAudienciaRequest;
+use App\Http\Requests\audiencias\UpdateAudienciaRequest;
 use Illuminate\Http\Request;
 use App\Models\Audiencia;
 use App\Models\Processo;
