@@ -104,6 +104,9 @@ npm run dev   # ou npm run build
 
 # Iniciar o servidor local
 php artisan serve
+
+# Criar o link público para arquivos enviados
+php artisan storage:link   # (necessário para acessar documentos)
 ```
 
 ---
