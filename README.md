@@ -67,8 +67,8 @@ Permite o cadastro e a gestão de contratos jurídicos vinculados ou não a clie
 ## Tecnologias Utilizadas
 
 - **Backend:** Laravel (PHP)  
-- **Frontend:** Blade, Bootstrap, HTML e CSS  
-- **Banco de Dados:** MySQL  
+- **Frontend:** Blade, tailwind e HTML
+- **Banco de Dados:** MySQL 
 - **Controle de Versão:** Git, GitHub  
 
 ---
