@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\contratos\CreateContratoRequest;
-use App\Http\Requests\contratos\UpdateContratoRequest;
+use App\Http\Requests\Contratos\CreateContratoRequest;
+use App\Http\Requests\Contratos\UpdateContratoRequest;
 use App\Models\Contrato;
 use App\Models\Cliente;
 

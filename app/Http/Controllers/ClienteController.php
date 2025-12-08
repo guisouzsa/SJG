@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
-use App\Http\Requests\clientes\CreateClienteRequest;
-use App\Http\Requests\clientes\UpdateClienteRequest;
+use App\Http\Requests\Clientes\CreateClienteRequest;
+use App\Http\Requests\Clientes\UpdateClienteRequest;
 
 class ClienteController extends Controller
 {

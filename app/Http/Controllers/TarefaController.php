@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\tarefas\CreateTarefaRequest;
-use App\Http\Requests\tarefas\UpdateTarefaRequest;
+use App\Http\Requests\Tarefas\CreateTarefaRequest;
+use App\Http\Requests\Tarefas\UpdateTarefaRequest;
 use App\Models\Tarefa;
 
 class TarefaController extends Controller
