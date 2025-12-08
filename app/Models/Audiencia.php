@@ -10,7 +10,7 @@ class Audiencia extends Model
         'processo_id',
         'titulo',
         'tipo',
-        'data_horario' => 'datetime',
+        'data_horario',
         'local',
         'descricao',
     ];
