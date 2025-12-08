@@ -44,7 +44,6 @@
                 </x-dropdown>
             </div>
 
-            <!-- MENU MOBILE -->
             <div class="-me-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-[#9EB9D4] hover:text-white hover:bg-[#003262]/30 focus:outline-none transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
