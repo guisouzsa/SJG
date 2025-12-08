@@ -14,16 +14,22 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+    <body class="font-sans antialiased">
+        <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#F0F8FF] via-[#E8F4F8] to-[#F0F8FF] py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-md w-full">
+                <!-- Logo e Título -->
+                <div class="text-center mb-8">
+                    <div class="flex justify-center mb-6">
+                        <img src="{{ asset('images/logoazul.png') }}" alt="Logo" class="h-20 w-auto">
+                    </div>
+                    <h1 class="text-3xl font-bold text-[#003262] mb-2">Sistema Jurídico</h1>
+                    <p class="text-gray-600">Gestão Advocatícia</p>
+                </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+                <!-- Card do Formulário -->
+                <div class="bg-white rounded-2xl shadow-xl border border-[#20729E]/20 p-8">
+                    {{ $slot }}
+                </div>
             </div>
         </div>
     </body>
