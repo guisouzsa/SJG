@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\tarefas;
+namespace App\Http\Requests\Tarefas;
 
 use Illuminate\Foundation\Http\FormRequest;
 
