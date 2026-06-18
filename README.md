@@ -1,6 +1,6 @@
 # Sistema Jurídico de Gestão (SJG)
 
-O **SJG** é um sistema web simples e eficiente, criado para ajudar profissionais da área jurídica a organizarem suas rotinas de forma clara e objetiva. O sistema permite o cadastro, consulta, edição e exclusão de informações importantes de forma independente, facilitando o gerenciamento de clientes, processos, audiências, tarefas, contratos, agenda, relatórios e configurações.
+O **SJG** é um sistema web desenvolvido para auxiliar profissionais da área jurídica na organização e gerenciamento de informações essenciais do escritório. A plataforma permite o cadastro, consulta, edição e exclusão de dados de forma independente, proporcionando uma experiência simples, eficiente e intuitiva para o controle de clientes, processos, audiências, tarefas, contratos, agenda, relatórios e configurações.
 
 ---
 
@@ -10,7 +10,8 @@ O SJG é composto por módulos independentes, permitindo a organização das pri
 
 ### Clientes
 
-Permite o cadastro e gestão de dados de pessoas físicas ou jurídicas.
+Permite o cadastro e a gestão de dados de pessoas físicas ou jurídicas.
+
 **Campos:**
 
 * Nome completo
@@ -22,6 +23,7 @@ Permite o cadastro e gestão de dados de pessoas físicas ou jurídicas.
 ### Processos
 
 Gerencia o cadastro e a atualização de informações relacionadas aos processos jurídicos.
+
 **Campos:**
 
 * Número do processo
@@ -32,6 +34,7 @@ Gerencia o cadastro e a atualização de informações relacionadas aos processo
 ### Audiências
 
 Registra e organiza as audiências relacionadas aos processos jurídicos.
+
 **Campos:**
 
 * Título da audiência
@@ -42,7 +45,8 @@ Registra e organiza as audiências relacionadas aos processos jurídicos.
 
 ### Tarefas
 
-Gerencia prazos, compromissos e ações do dia a dia.
+Gerencia prazos, compromissos e atividades do dia a dia.
+
 **Campos:**
 
 * Título da tarefa
@@ -52,7 +56,8 @@ Gerencia prazos, compromissos e ações do dia a dia.
 
 ### Contratos
 
-Permite o cadastro e a gestão de contratos jurídicos vinculados ou não a clientes/processos.
+Permite o cadastro e a gestão de contratos jurídicos.
+
 **Campos:**
 
 * Título do contrato
@@ -65,7 +70,8 @@ Permite o cadastro e a gestão de contratos jurídicos vinculados ou não a clie
 
 ### Agenda
 
-Permite o gerenciamento de compromissos e eventos jurídicos.
+Permite o gerenciamento de compromissos, reuniões, audiências e eventos.
+
 **Campos:**
 
 * Título
@@ -76,7 +82,7 @@ Permite o gerenciamento de compromissos e eventos jurídicos.
 
 ### Relatórios
 
-Permite visualizar informações consolidadas do sistema para acompanhamento das atividades jurídicas.
+Permite visualizar informações consolidadas do sistema para acompanhamento e análise das atividades jurídicas.
 
 ### Configurações
 
@@ -86,10 +92,13 @@ Permite personalizar e administrar parâmetros gerais do sistema, adequando-o à
 
 ## Recursos Gerais
 
-* Cadastro, edição e exclusão de registros nos módulos de Clientes, Processos, Audiências, Tarefas, Contratos, Agenda, Relatórios e Configurações
-* Interface simples e intuitiva, focada na experiência do usuário
-* Validação de dados com mensagens de erro claras e objetivas
-* Estrutura independente entre os módulos, sem dependências entre os cadastros
+* Cadastro, edição e exclusão de registros em todos os módulos
+* Interface simples e intuitiva
+* Validação de dados com mensagens claras e objetivas
+* Estrutura modular e independente
+* Controle centralizado das informações jurídicas
+* Organização de compromissos e atividades
+* Emissão e visualização de relatórios
 
 ---
 
@@ -97,14 +106,61 @@ Permite personalizar e administrar parâmetros gerais do sistema, adequando-o à
 
 * **Backend:** Laravel (PHP)
 * **Frontend:** Blade, Tailwind CSS e HTML
-* **Banco de Dados:** MySQL
-* **Controle de Versão:** Git, GitHub
+* **Banco de Dados:** MySQL ou PostgreSQL (Supabase)
+* **Controle de Versão:** Git e GitHub
+
+---
+
+## Banco de Dados
+
+O sistema pode ser utilizado tanto com **MySQL** quanto com **Supabase (PostgreSQL)**.
+
+### Utilizando MySQL
+
+Configure o arquivo `.env`:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=sjg
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### Utilizando Supabase (PostgreSQL)
+
+1. Crie um projeto no Supabase.
+2. Acesse **Project Settings → Database**.
+3. Copie as credenciais de conexão.
+4. Configure o arquivo `.env`:
+
+```env
+DB_CONNECTION=pgsql
+DB_HOST=db.xxxxxxxxx.supabase.co
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=postgres
+DB_PASSWORD=sua_senha
+```
+
+Após configurar o banco de dados, execute as migrações normalmente:
+
+```bash
+php artisan migrate
+```
+
+Caso existam seeders:
+
+```bash
+php artisan db:seed
+```
 
 ---
 
 ## Instalação e Execução
 
-Para rodar o projeto localmente, siga os passos abaixo:
+Para rodar o projeto localmente:
 
 ```bash
 # Clonar o repositório
@@ -116,26 +172,34 @@ cd <pasta_projeto>
 # Instalar dependências do PHP
 composer install
 
-# Configurar o arquivo de ambiente
+# Configurar o ambiente
 cp .env.example .env
 
 # Gerar chave da aplicação
 php artisan key:generate
 
-# Executar migrações do banco de dados
+# Configurar o banco de dados (MySQL ou Supabase)
+
+# Executar migrações
 php artisan migrate
 
 # Instalar dependências do frontend
 npm install
 
 # Compilar os assets
-npm run dev   # ou npm run build
+npm run dev
 
 # Iniciar o servidor local
 php artisan serve
 
-# Criar o link público para arquivos enviados
+# Criar link para arquivos públicos
 php artisan storage:link
+```
+
+A aplicação estará disponível em:
+
+```text
+http://127.0.0.1:8000
 ```
 
 ---
