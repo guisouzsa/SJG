@@ -43,30 +43,54 @@
         <!-- Senha -->
         <div>
             <x-input-label for="password" :value="__('Senha')" class="text-[#003262] font-medium mb-2" />
-            <x-text-input 
-                id="password" 
-                class="block w-full px-4 py-3 rounded-lg border-gray-300 focus:border-[#20729E] focus:ring-[#20729E] transition-all"
-                type="password"
-                name="password"
-                required 
-                autocomplete="new-password"
-                placeholder="Mínimo 8 caracteres"
-            />
+            <div class="relative">
+                <x-text-input 
+                    id="password" 
+                    class="block w-full px-4 py-3 rounded-lg border-gray-300 focus:border-[#20729E] focus:ring-[#20729E] transition-all pr-10"
+                    type="password"
+                    name="password"
+                    required 
+                    autocomplete="new-password"
+                    placeholder="Mínimo 8 caracteres"
+                />
+                <button 
+                    type="button" 
+                    onclick="togglePassword('password')" 
+                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#6699CC] hover:text-[#003262] transition-colors"
+                >
+                    <svg id="password-eye" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                </button>
+            </div>
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Confirmar Senha -->
         <div>
             <x-input-label for="password_confirmation" :value="__('Confirmar Senha')" class="text-[#003262] font-medium mb-2" />
-            <x-text-input 
-                id="password_confirmation" 
-                class="block w-full px-4 py-3 rounded-lg border-gray-300 focus:border-[#20729E] focus:ring-[#20729E] transition-all"
-                type="password"
-                name="password_confirmation" 
-                required 
-                autocomplete="new-password"
-                placeholder="Digite a senha novamente"
-            />
+            <div class="relative">
+                <x-text-input 
+                    id="password_confirmation" 
+                    class="block w-full px-4 py-3 rounded-lg border-gray-300 focus:border-[#20729E] focus:ring-[#20729E] transition-all pr-10"
+                    type="password"
+                    name="password_confirmation" 
+                    required 
+                    autocomplete="new-password"
+                    placeholder="Digite a senha novamente"
+                />
+                <button 
+                    type="button" 
+                    onclick="togglePassword('password_confirmation')" 
+                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#6699CC] hover:text-[#003262] transition-colors"
+                >
+                    <svg id="password_confirmation-eye" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                </button>
+            </div>
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
@@ -104,4 +128,18 @@
             </a>
         </div>
     </form>
+    <script>
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const eye = document.getElementById(fieldId + '-eye');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                eye.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-2.391m5.005-2.905A9.005 9.005 0 0112 5c4.478 0 8.268 2.943 9.543 7a9.97 9.97 0 01-1.563 2.391m-5.005 2.905a9.06 9.06 0 01-5.657-3.515m5.657 3.515l3.536 3.536c.195.195.45.293.707.293a1 1 0 000-2l-.707-.707a1 1 0 00-1.414 0zm0-5.657l-3.536-3.536"></path>';
+            } else {
+                field.type = 'password';
+                eye.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>';
+            }
+        }
+    </script>
 </x-guest-layout>
