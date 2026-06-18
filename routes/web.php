@@ -37,6 +37,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('contratos', ContratoController::class)->except(['show']);
 
+    // Agenda, Relatórios e Configurações
+    Route::get('/agenda', function () {
+        return view('agenda.index');
+    })->name('agenda');
+
+    Route::get('/relatorios', function () {
+        return view('relatorios.index');
+    })->name('relatorios');
+
+    Route::get('/configuracoes', function () {
+        return view('configuracoes.index');
+    })->name('configuracoes');
+
 });
 
 require __DIR__.'/auth.php';
