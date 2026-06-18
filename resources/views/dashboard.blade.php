@@ -1,267 +1,199 @@
-@extends('layouts.app-with-sidebar')
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'SJG - Sistema Jurídico')</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="bg-[#F0F8FF] min-h-screen font-sans antialiased">
 
-@section('title', 'Dashboard - SJG')
-@section('breadcrumb', 'Dashboard')
+<div class="flex min-h-screen bg-gradient-to-br from-[#F0F8FF] via-[#9EB9D4]/10 to-[#6699CC]/20">
+    
+    <aside class="hidden lg:flex lg:flex-shrink-0">
+        <div class="flex flex-col w-72">
+            <div class="flex flex-col flex-1 bg-gradient-to-b from-[#003262] to-[#001a3a] border-r border-[#2072AF]/20">
+                <div class="px-4 py-6 border-b border-[#2072AF]/20">
+                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                        <img src="/images/logo.png" alt="Logo" class="w-10 h-10">
+                        <div>
+                            <p class="text-sm font-bold text-white">SJG</p>
+                            <p class="text-xs text-[#9EB9D4]">Sistema</p>
+                        </div>
+                    </a>
+                </div>
 
-@section('content')
-            <div class="max-w-7xl mx-auto">
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                   <div class="bg-white/80 backdrop-blur-sm rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-[#2072AF]/20">
-                        <div class="flex justify-between items-center gap-4">
-                            <div>
-                                <p class="text-[#003262]/60 text-sm font-medium uppercase tracking-wide">Total Clientes</p>
-                                <p class="text-3xl font-bold text-[#003262] mt-2">{{ $totalClientes }}</p>
-                            </div>
-                            <div class="bg-gradient-to-br from-[#2072AF] to-[#6699CC] p-4 rounded-lg flex items-center justify-center">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+                    
+                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl @if(request()->route()->getName() === 'dashboard') bg-gradient-to-r from-[#2072AF] to-[#6699CC] text-white shadow-lg @else text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all @endif">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                        <span class="text-sm font-semibold">Dashboard</span>
+                    </a>
+
+                    <a href="{{ route('clientes.index') }}" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl @if(str_contains(request()->route()->getName(), 'clientes')) bg-gradient-to-r from-[#2072AF] to-[#6699CC] text-white shadow-lg @else text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all @endif">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <span class="text-sm font-medium">Clientes</span>
+                    </a>
+
+                    <a href="{{ route('processos.index') }}" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl @if(str_contains(request()->route()->getName(), 'processos')) bg-gradient-to-r from-[#2072AF] to-[#6699CC] text-white shadow-lg @else text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all @endif">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <span class="text-sm font-medium">Processos</span>
+                    </a>
+
+                    <a href="{{ route('audiencias.index') }}" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl @if(str_contains(request()->route()->getName(), 'audiencias')) bg-gradient-to-r from-[#2072AF] to-[#6699CC] text-white shadow-lg @else text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all @endif">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+                        </svg>
+                        <span class="text-sm font-medium">Audiências</span>
+                    </a>
+
+                    <a href="{{ route('tarefas.index') }}" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl @if(str_contains(request()->route()->getName(), 'tarefas')) bg-gradient-to-r from-[#2072AF] to-[#6699CC] text-white shadow-lg @else text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all @endif">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                        </svg>
+                        <span class="text-sm font-medium">Tarefas</span>
+                    </a>
+
+                    <a href="{{ route('contratos.index') }}" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl @if(str_contains(request()->route()->getName(), 'contratos')) bg-gradient-to-r from-[#2072AF] to-[#6699CC] text-white shadow-lg @else text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all @endif">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <span class="text-sm font-medium">Contratos</span>
+                    </a>
+
+                    <div class="my-2 border-t border-[#2072AF]/30"></div>
+
+                    <a href="{{ route('dashboard') }}#agenda" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m5 6H4a2 2 0 01-2-2V7a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2z"/>
+                        </svg>
+                        <span class="text-sm font-medium">Agenda</span>
+                    </a>
+
+                    <a href="{{ route('dashboard') }}#relatorios" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                        <span class="text-sm font-medium">Relatórios</span>
+                    </a>
+
+                    <a href="{{ route('dashboard') }}#configuracoes" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="text-sm font-medium">Configurações</span>
+                    </a>
+                </nav>
+
+                <div class="px-4 py-6 border-t border-[#2072AF]/20">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
                             </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white/80 backdrop-blur-sm rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-[#6699CC]/20">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-[#003262]/60 text-sm font-medium uppercase tracking-wide">Processos Ativos</p>
-                                <p class="text-3xl font-bold text-[#003262] mt-2">{{ $totalProcessos }}</p>
-                            </div>
-                            <div class="bg-gradient-to-br from-[#6699CC] to-[#7BAFD4] p-4 rounded-lg">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white/80 backdrop-blur-sm rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-[#7BAFD4]/20">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-[#003262]/60 text-sm font-medium uppercase tracking-wide">Próximas Audiências</p>
-                                <p class="text-3xl font-bold text-[#003262] mt-2">{{ $totalAudiencias }}</p>
-                            </div>
-                            <div class="bg-gradient-to-br from-[#7BAFD4] to-[#9EB9D4] p-4 rounded-lg">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white/80 backdrop-blur-sm rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-[#9EB9D4]/20">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-[#003262]/60 text-sm font-medium uppercase tracking-wide">Tarefas Pendentes</p>
-                                <p class="text-3xl font-bold text-[#003262] mt-2">{{ $estatisticasTarefas['pendentes'] }}</p>
-                            </div>
-                            <div class="bg-gradient-to-br from-[#9EB9D4] to-[#2072AF] p-4 rounded-lg">
-                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                    
-                    <div class="lg:col-span-2 bg-white/80 backdrop-blur-sm rounded-xl shadow-md p-6 border border-[#003262]/10">
-                        <h3 class="text-xl font-bold text-[#003262] mb-5">Atualizações Recentes</h3>
-                        <div class="space-y-3">
-                            @forelse($atualizacoesRecentes as $atualizacao)
-                            <div class="flex items-start space-x-3 p-4 rounded-lg border-l-4"
-                                 style="border-color: #{{ $atualizacao['cor'] }}; background: linear-gradient(to right, #{{ $atualizacao['cor'] }}0D, transparent);">
-                                <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                                     style="background-color: #{{ $atualizacao['cor'] }}1A;">
-                                    @if($atualizacao['icone'] == 'user')
-                                    <svg class="w-5 h-5" style="color: #{{ $atualizacao['cor'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                                    </svg>
-                                    @elseif($atualizacao['icone'] == 'calendar')
-                                    <svg class="w-5 h-5" style="color: #{{ $atualizacao['cor'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                    </svg>
-                                    @elseif($atualizacao['icone'] == 'document')
-                                    <svg class="w-5 h-5" style="color: #{{ $atualizacao['cor'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                    </svg>
-                                    @elseif($atualizacao['icone'] == 'check')
-                                    <svg class="w-5 h-5" style="color: #{{ $atualizacao['cor'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
-                                    </svg>
-                                    @endif
-                                </div>
-                                <div class="flex-1">
-                                    <p class="font-semibold text-[#003262] text-sm">{{ $atualizacao['titulo'] }}</p>
-                                    <p class="text-xs text-[#003262]/60 mt-1">{{ $atualizacao['descricao'] }}</p>
-                                </div>
-                            </div>
-                            @empty
-                            <div class="text-center py-8 text-[#003262]/60">
-                                <p>Nenhuma atualização recente</p>
-                            </div>
-                            @endforelse
-                        </div>
-                    </div>
-
-                    <div class="space-y-6">
-                        
-                        <div class="bg-white/80 backdrop-blur-sm rounded-xl shadow-md p-6 border border-[#003262]/10">
-                            <h3 class="text-xl font-bold text-[#003262] mb-5">Atalhos Rápidos</h3>
-                            <div class="grid grid-cols-2 gap-3">
-                                <a href="{{ route('clientes.create') }}" class="flex flex-col items-center justify-center p-4 bg-gradient-to-br from-[#2072AF]/10 to-[#2072AF]/5 hover:from-[#2072AF]/20 hover:to-[#2072AF]/10 rounded-xl border border-[#2072AF]/20 transition-all group">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-[#2072AF] to-[#6699CC] rounded-xl flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
-                                        </svg>
-                                    </div>
-                                    <span class="text-xs font-semibold text-[#003262]">Novo Cliente</span>
-                                </a>
-
-                                <a href="{{ route('processos.create') }}" class="flex flex-col items-center justify-center p-4 bg-gradient-to-br from-[#6699CC]/10 to-[#6699CC]/5 hover:from-[#6699CC]/20 hover:to-[#6699CC]/10 rounded-xl border border-[#6699CC]/20 transition-all group">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-[#6699CC] to-[#7BAFD4] rounded-xl flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                        </svg>
-                                    </div>
-                                    <span class="text-xs font-semibold text-[#003262]">Novo Processo</span>
-                                </a>
-
-                                <a href="{{ route('audiencias.create') }}" class="flex flex-col items-center justify-center p-4 bg-gradient-to-br from-[#7BAFD4]/10 to-[#7BAFD4]/5 hover:from-[#7BAFD4]/20 hover:to-[#7BAFD4]/10 rounded-xl border border-[#7BAFD4]/20 transition-all group">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-[#7BAFD4] to-[#9EB9D4] rounded-xl flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                        </svg>
-                                    </div>
-                                    <span class="text-xs font-semibold text-[#003262]">Nova Audiência</span>
-                                </a>
-
-                                <a href="{{ route('tarefas.create') }}" class="flex flex-col items-center justify-center p-4 bg-gradient-to-br from-[#9EB9D4]/10 to-[#9EB9D4]/5 hover:from-[#9EB9D4]/20 hover:to-[#9EB9D4]/10 rounded-xl border border-[#9EB9D4]/20 transition-all group">
-                                    <div class="w-12 h-12 bg-gradient-to-br from-[#9EB9D4] to-[#2072AF] rounded-xl flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-                                        </svg>
-                                    </div>
-                                    <span class="text-xs font-semibold text-[#003262]">Nova Tarefa</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="bg-white/80 backdrop-blur-sm rounded-xl shadow-md p-6 border border-[#003262]/10">
-                            <h3 class="text-lg font-bold text-[#003262] mb-4">Tipos de Processos</h3>
-                            <div class="space-y-4">
-                                @forelse($tiposProcessos as $tipo)
-                                <div>
-                                    <div class="flex items-center justify-between mb-2">
-                                        <span class="text-sm font-medium text-[#003262]">{{ $tipo['tipo'] }}</span>
-                                        <span class="text-sm font-bold" style="color: #{{ $tipo['cor_inicio'] }};">{{ $tipo['porcentagem'] }}%</span>
-                                    </div>
-                                    <div class="w-full bg-[#003262]/10 rounded-full h-2">
-                                        <div class="h-2 rounded-full" style="width: {{ $tipo['porcentagem'] }}%; background: linear-gradient(to right, #{{ $tipo['cor_inicio'] }}, #{{ $tipo['cor_fim'] }});"></div>
-                                    </div>
-                                </div>
-                                @empty
-                                <div class="text-center py-4 text-[#003262]/60">
-                                    <p class="text-sm">Nenhum processo cadastrado</p>
-                                </div>
-                                @endforelse
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    
-                    <div class="bg-white/80 backdrop-blur-sm rounded-xl shadow-md p-6 border border-[#003262]/10">
-                        <h3 class="text-xl font-bold text-[#003262] mb-5">Tarefas: Concluídas vs Pendentes</h3>
-                        <div class="space-y-5">
-                            <div>
-                                <div class="flex items-center justify-between mb-3">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-4 h-4 bg-gradient-to-br from-[#2072AF] to-[#6699CC] rounded"></div>
-                                        <span class="text-sm font-medium text-[#003262]">Concluídas</span>
-                                    </div>
-                                    <span class="text-2xl font-bold text-[#2072AF]">{{ $estatisticasTarefas['concluidas'] }}</span>
-                                </div>
-                                <div class="w-full bg-[#003262]/10 rounded-full h-3">
-                                    <div class="bg-gradient-to-r from-[#2072AF] to-[#6699CC] h-3 rounded-full" style="width: {{ $estatisticasTarefas['porcentagem_concluidas'] }}%"></div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="flex items-center justify-between mb-3">
-                                    <div class="flex items-center space-x-2">
-                                        <div class="w-4 h-4 bg-gradient-to-br from-[#9EB9D4] to-[#7BAFD4] rounded"></div>
-                                        <span class="text-sm font-medium text-[#003262]">Pendentes</span>
-                                    </div>
-                                    <span class="text-2xl font-bold text-[#7BAFD4]">{{ $estatisticasTarefas['pendentes'] }}</span>
-                                </div>
-                                <div class="w-full bg-[#003262]/10 rounded-full h-3">
-                                    <div class="bg-gradient-to-r from-[#9EB9D4] to-[#7BAFD4] h-3 rounded-full" style="width: {{ $estatisticasTarefas['porcentagem_pendentes'] }}%"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 pt-5 border-t border-[#003262]/10">
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm font-medium text-[#003262]/60">Taxa de conclusão</span>
-                                <span class="text-lg font-bold text-[#2072AF]">{{ $estatisticasTarefas['taxa_conclusao'] }}%</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white/80 backdrop-blur-sm rounded-xl shadow-md p-6 border border-[#003262]/10">
-                        <h3 class="text-xl font-bold text-[#003262] mb-5">Módulos do Sistema</h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            
-                            <a href="{{ route('clientes.index') }}" class="group relative overflow-hidden bg-gradient-to-br from-[#2072AF]/10 to-transparent rounded-xl border border-[#2072AF]/20 p-5 hover:shadow-lg transition-all">
-                                <div class="flex flex-col items-center text-center">
-                                    <div class="bg-gradient-to-br from-[#2072AF] to-[#6699CC] p-3 rounded-xl mb-3 group-hover:scale-110 transition-transform">
-                                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="text-[#003262] text-sm font-bold">Clientes</h4>
-                                </div>
-                            </a>
-
-                            <a href="{{ route('processos.index') }}" class="group relative overflow-hidden bg-gradient-to-br from-[#6699CC]/10 to-transparent rounded-xl border border-[#6699CC]/20 p-5 hover:shadow-lg transition-all">
-                                <div class="flex flex-col items-center text-center">
-                                    <div class="bg-gradient-to-br from-[#6699CC] to-[#7BAFD4] p-3 rounded-xl mb-3 group-hover:scale-110 transition-transform">
-                                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="text-[#003262] text-sm font-bold">Processos</h4>
-                                </div>
-                            </a>
-
-                            <a href="{{ route('audiencias.index') }}" class="group relative overflow-hidden bg-gradient-to-br from-[#7BAFD4]/10 to-transparent rounded-xl border border-[#7BAFD4]/20 p-5 hover:shadow-lg transition-all">
-                                <div class="flex flex-col items-center text-center">
-                                    <div class="bg-gradient-to-br from-[#7BAFD4] to-[#9EB9D4] p-3 rounded-xl mb-3 group-hover:scale-110 transition-transform">
-                                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="text-[#003262] text-sm font-bold">Audiências</h4>
-                                </div>
-                            </a>
-
-                            <a href="{{ route('tarefas.index') }}" class="group relative overflow-hidden bg-gradient-to-br from-[#9EB9D4]/10 to-transparent rounded-xl border border-[#9EB9D4]/20 p-5 hover:shadow-lg transition-all">
-                                <div class="flex flex-col items-center text-center">
-                                    <div class="bg-gradient-to-br from-[#9EB9D4] to-[#2072AF] p-3 rounded-xl mb-3 group-hover:scale-110 transition-transform">
-                                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
-                                        </svg>
-                                    </div>
-                                    <h4 class="text-[#003262] text-sm font-bold">Tarefas</h4>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                            <span class="text-sm font-medium">Sair</span>
+                        </button>
+                    </form>
                 </div>
             </div>
-@endsection
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col">
+        <header class="bg-gradient-to-r from-[#003262] to-[#20729E] shadow-lg">
+            <div class="px-6 py-4 flex items-center justify-between">
+                <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                    <img src="/images/logo.png" alt="Logo" class="w-12 h-12">
+                    <div>
+                        <p class="text-sm font-semibold text-white">SJG</p>
+                        <p class="text-xs text-[#9EB9D4]">Sistema Jurídico</p>
+                    </div>
+                </a>
+
+                <div class="flex items-center space-x-3">
+                    <a href="{{ route('profile.edit') }}" class="flex items-center space-x-2 px-4 py-2 rounded-lg border border-white/20 text-white hover:bg-white/10 transition-all">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span class="text-sm font-medium">Perfil</span>
+                    </a>
+
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="flex items-center space-x-2 px-4 py-2 rounded-lg border border-red-400/40 text-red-300 hover:bg-red-500/20 hover:text-red-200 transition-all">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                            </svg>
+                            <span class="text-sm font-medium">Sair</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </header>
+
+        <div class="bg-white border-b border-[#9EB9D4]">
+            <div class="px-6 py-3">
+                <div class="flex items-center space-x-2 text-sm">
+                    <svg class="w-4 h-4 text-[#6699CC]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    <span class="text-[#9EB9D4]">/</span>
+                    <span class="text-[#003262] font-medium">@yield('breadcrumb', 'Dashboard')</span>
+                </div>
+            </div>
+        </div>
+
+        <main class="flex-1 overflow-auto p-8">
+            @yield('content')
+        </main>
+    </div>
+</div>
+
+@if(session('created'))
+<div id="modal-created" class="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50">
+    <div class="bg-[#003264] text-white w-[420px] p-6 rounded-xl shadow-2xl animate-zoom">
+        <h2 class="text-xl font-semibold mb-3">Cadastrado com sucesso</h2>
+        <p class="text-sm leading-normal mb-5">Seu cadastro foi salvo no sistema.<br>Clique no botão abaixo para retornar e continuar utilizando o sistema normalmente.</p>
+        <button onclick="document.getElementById('modal-created').remove()" class="w-full bg-white text-[#003264] font-semibold py-2 rounded-lg shadow hover:bg-gray-100">OK</button>
+    </div>
+</div>
+@endif
+
+@if(session('updated'))
+<div id="modal-updated" class="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50">
+    <div class="bg-[#003264] text-white w-[420px] p-6 rounded-xl shadow-2xl animate-zoom">
+        <h2 class="text-xl font-semibold mb-3">Atualizado com sucesso</h2>
+        <p class="text-sm leading-normal mb-5">As informações foram alteradas corretamente.<br>Você pode seguir usando o sistema normalmente clicando no botão abaixo.</p>
+        <button onclick="document.getElementById('modal-updated').remove()" class="w-full bg-white text-[#003264] font-semibold py-2 rounded-lg shadow hover:bg-gray-100">OK</button>
+    </div>
+</div>
+@endif
+
+@if(session('deleted'))
+<div id="modal-deleted" class="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50">
+    <div class="bg-[#003264] text-white w-[420px] p-6 rounded-xl shadow-2xl animate-zoom">
+        <h2 class="text-xl font-semibold mb-3">Deletado com sucesso</h2>
+        <p class="text-sm leading-normal mb-5">O registro foi removido do sistema.<br>Clique em OK para retornar à tela anterior.</p>
+        <button onclick="document.getElementById('modal-deleted').remove()" class="w-full bg-white text-[#003264] font-semibold py-2 rounded-lg shadow hover:bg-gray-100">OK</button>
+    </div>
+</div>
+@endif
+
+<style>
+@keyframes zoom {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+}
+.animate-zoom { animation: zoom .25s ease-out; }
+</style>
+
+</body>
+</html>
