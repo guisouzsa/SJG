@@ -7,16 +7,17 @@ use App\Models\Processo;
 use App\Models\Audiencia;
 use App\Models\Tarefa;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         // Contadores principais
-        $totalClientes = Cliente::count();
-        $totalProcessos = Processo::count();
-        $totalAudiencias = Audiencia::count();
-        $totalTarefas = Tarefa::count();
+        $totalClientes = Cliente::where('user_id', Auth::id())->count();
+        $totalProcessos = Processo::where('user_id', Auth::id())->count();
+        $totalAudiencias = Audiencia::where('user_id', Auth::id())->count();
+        $totalTarefas = Tarefa::where('user_id', Auth::id())->count();
 
         // Atualizações Recentes (últimas 5 atividades)
         $atualizacoesRecentes = $this->getAtualizacoesRecentes();
@@ -46,7 +47,8 @@ class DashboardController extends Controller
         $atualizacoes = collect();
 
         // Últimos clientes cadastrados
-        $ultimosClientes = Cliente::latest()
+        $ultimosClientes = Cliente::where('user_id', Auth::id())
+            ->latest()
             ->take(2)
             ->get()
             ->map(function ($cliente) {
@@ -61,7 +63,8 @@ class DashboardController extends Controller
             });
 
         // Últimas audiências marcadas
-        $ultimasAudiencias = Audiencia::latest()
+        $ultimasAudiencias = Audiencia::where('user_id', Auth::id())
+        ->latest()
         ->take(1)
         ->get()
         ->map(function ($audiencia) {
@@ -79,7 +82,8 @@ class DashboardController extends Controller
 
 
         // Últimos processos cadastrados
-        $ultimosProcessos = Processo::latest()
+        $ultimosProcessos = Processo::where('user_id', Auth::id())
+            ->latest()
             ->take(1)
             ->get()
             ->map(function ($processo) {
@@ -94,7 +98,8 @@ class DashboardController extends Controller
             });
 
         // Últimas tarefas concluídas
-        $ultimasTarefas = Tarefa::where('status', 'concluida')
+        $ultimasTarefas = Tarefa::where('user_id', Auth::id())
+            ->where('status', 'concluida')
             ->latest('updated_at')
             ->take(1)
             ->get()
@@ -126,7 +131,7 @@ class DashboardController extends Controller
      */
     private function getTiposProcessos()
     {
-        $total = Processo::count();
+        $total = Processo::where('user_id', Auth::id())->count();
         
         if ($total == 0) {
             return [
@@ -139,7 +144,8 @@ class DashboardController extends Controller
             ];
         }
 
-        $tipos = Processo::select('tipo', DB::raw('count(*) as total'))
+        $tipos = Processo::where('user_id', Auth::id())
+            ->select('tipo', DB::raw('count(*) as total'))
             ->groupBy('tipo')
             ->get()
             ->mapWithKeys(function ($item) use ($total) {
@@ -183,9 +189,9 @@ class DashboardController extends Controller
      */
     private function getEstatisticasTarefas()
     {
-        $total = Tarefa::count();
-        $concluidas = Tarefa::where('status', 'concluida')->count();
-        $pendentes = Tarefa::where('status', 'pendente')->count();
+        $total = Tarefa::where('user_id', Auth::id())->count();
+        $concluidas = Tarefa::where('user_id', Auth::id())->where('status', 'concluida')->count();
+        $pendentes = Tarefa::where('user_id', Auth::id())->where('status', 'pendente')->count();
 
         $porcentagemConcluidas = $total > 0 ? round(($concluidas / $total) * 100) : 0;
         $porcentagemPendentes = $total > 0 ? round(($pendentes / $total) * 100) : 0;

@@ -4,23 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Processos\CreateProcessoRequest;
 use App\Http\Requests\Processos\UpdateProcessoRequest;
-use Illuminate\Http\Request;
 use App\Models\Processo;
-use App\Models\Cliente;  
+use App\Models\Cliente;
+use Illuminate\Support\Facades\Auth;
 
 class ProcessoController extends Controller
 {
     public function index()
     {
     
-        $processos = Processo::with('cliente')->get();
+        $processos = Processo::where('user_id', Auth::id())->with('cliente')->get();
 
         return view("processos.index", compact("processos"));
     }
 
     public function create()
     {
-        $clientes = Cliente::all();
+        $clientes = Cliente::where('user_id', Auth::id())->get();
         return view('processos.create', compact('clientes'));
     }
 
@@ -35,6 +35,8 @@ class ProcessoController extends Controller
             'documento'
         ]);
 
+        $dados['user_id'] = Auth::id();
+
         if ($request->hasFile('documento')) {
             $dados['documento'] = $request->file('documento')->store('documentos', 'public');
         }
@@ -46,15 +48,15 @@ class ProcessoController extends Controller
 
     public function edit(string $id)
     {
-        $processo = Processo::findOrFail($id);
-        $clientes = Cliente::all();  
+        $processo = Processo::where('user_id', Auth::id())->findOrFail($id);
+        $clientes = Cliente::where('user_id', Auth::id())->get();  
 
         return view("processos.edit", compact("processo", "clientes"));
     }
 
     public function update(UpdateProcessoRequest $request, string $id)
     {
-        $processo = Processo::findOrFail($id);
+        $processo = Processo::where('user_id', Auth::id())->findOrFail($id);
 
         $dados = $request->only([
             'cliente_id',  
@@ -76,7 +78,7 @@ class ProcessoController extends Controller
 
     public function destroy(string $id)
     {
-        $processo = Processo::findOrFail($id);
+        $processo = Processo::where('user_id', Auth::id())->findOrFail($id);
         $processo->delete();
 
         return redirect()->route('processos.index')->with('deleted', true);

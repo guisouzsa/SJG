@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Processo extends Model
 {
     protected $fillable = [
+        'user_id',
         'cliente_id',
         'numero_processo',
         'tipo',
@@ -14,6 +15,11 @@ class Processo extends Model
         'descricao',
         'documento',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function cliente()
     {

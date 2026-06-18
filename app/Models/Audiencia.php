@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Audiencia extends Model
 {
     protected $fillable = [
+        'user_id',
         'processo_id',
         'titulo',
         'tipo',
@@ -14,6 +15,11 @@ class Audiencia extends Model
         'local',
         'descricao',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function processo()
     {

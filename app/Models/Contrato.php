@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contrato extends Model
 {
     protected $fillable = [
+        'user_id',
         'cliente_id',
         'titulo',
         'tipo',
@@ -16,6 +17,11 @@ class Contrato extends Model
         'descricao',
         'documento'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function cliente()
     {

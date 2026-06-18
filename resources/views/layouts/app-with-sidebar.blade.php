@@ -58,6 +58,30 @@
                             </svg>
                         <span class="text-sm font-medium">Contratos</span>
                     </a>
+
+                    <div class="my-2 border-t border-[#2072AF]/30"></div>
+
+                    <a href="{{ route('dashboard') }}#agenda" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10m5 6H4a2 2 0 01-2-2V7a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2z"/>
+                        </svg>
+                        <span class="text-sm font-medium">Agenda</span>
+                    </a>
+
+                    <a href="{{ route('dashboard') }}#relatorios" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                        <span class="text-sm font-medium">Relatórios</span>
+                    </a>
+
+                    <a href="{{ route('dashboard') }}#configuracoes" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="text-sm font-medium">Configurações</span>
+                    </a>
                 </nav>
 
                 <div class="px-4 py-6 border-t border-[#2072AF]/20">
@@ -78,13 +102,13 @@
     <div class="flex-1 flex flex-col">
         <header class="bg-gradient-to-r from-[#003262] to-[#20729E] shadow-lg">
             <div class="px-6 py-4 flex items-center justify-between">
-                <div class="flex items-center space-x-3">
+                <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
                     <img src="/images/logo.png" alt="Logo" class="w-12 h-12">
                     <div>
                         <p class="text-sm font-semibold text-white">SJG</p>
                         <p class="text-xs text-[#9EB9D4]">Sistema Jurídico</p>
                     </div>
-                </div>
+                </a>
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('profile.edit') }}" class="flex items-center space-x-2 text-white hover:text-[#9EB9D4] transition-colors">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,8 +173,4 @@
     from { opacity: 0; transform: scale(0.9); }
     to   { opacity: 1; transform: scale(1); }
 }
-.animate-zoom { animation: zoom .25s ease-out; }
-</style>
-
-</body>
-</html>
+.animate-zo

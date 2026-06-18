@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\Tarefas\CreateTarefaRequest;
 use App\Http\Requests\Tarefas\UpdateTarefaRequest;
 use App\Models\Tarefa;
+use Illuminate\Support\Facades\Auth;
 
 class TarefaController extends Controller
 {
     public function index()
     {
-        $tarefas = Tarefa::all();
+        $tarefas = Tarefa::where('user_id', Auth::id())->get();
         return view("tarefas.index", compact("tarefas"));
     }
 
@@ -22,11 +22,13 @@ class TarefaController extends Controller
 
     public function store(CreateTarefaRequest $request)
     {
-        Tarefa::create($request->only([
+        Tarefa::create(array_merge($request->only([
             'titulo',
             'data_limite',
             'status',
             'descricao'
+        ]), [
+            'user_id' => Auth::id()
         ]));
 
         return redirect()->route('tarefas.index')->with('updated', true);
@@ -39,13 +41,13 @@ class TarefaController extends Controller
 
     public function edit(string $id)
     {
-        $tarefa = Tarefa::findOrFail($id);
+        $tarefa = Tarefa::where('user_id', Auth::id())->findOrFail($id);
         return view("tarefas.edit", compact("tarefa"));
     }
 
     public function update(UpdateTarefaRequest $request, string $id)
     {
-        $tarefa = Tarefa::findOrFail($id);
+        $tarefa = Tarefa::where('user_id', Auth::id())->findOrFail($id);
 
         $tarefa->update($request->all());
 
@@ -54,7 +56,7 @@ class TarefaController extends Controller
 
     public function destroy(string $id)
     {
-        $tarefa = Tarefa::findOrFail($id);
+        $tarefa = Tarefa::where('user_id', Auth::id())->findOrFail($id);
 
         $tarefa->delete();
 

@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\Contratos\CreateContratoRequest;
 use App\Http\Requests\Contratos\UpdateContratoRequest;
 use App\Models\Contrato;
 use App\Models\Cliente;
+use Illuminate\Support\Facades\Auth;
 
 class ContratoController extends Controller
 {
     public function index()
     {
-        $contratos = Contrato::with('cliente')->get();
+        $contratos = Contrato::where('user_id', Auth::id())->with('cliente')->get();
         return view("contratos.index", compact("contratos"));
     }
 
     public function create()
     {
-        $clientes = Cliente::all();
+        $clientes = Cliente::where('user_id', Auth::id())->get();
         return view('contratos.create', compact('clientes'));
     }
 
@@ -35,6 +35,8 @@ class ContratoController extends Controller
             'documento'
         ]);
 
+        $dados['user_id'] = Auth::id();
+
         if ($request->hasFile('documento')) {
             $dados['documento'] = $request->file('documento')->store('contratos', 'public');
         }
@@ -46,15 +48,15 @@ class ContratoController extends Controller
 
     public function edit(string $id)
     {
-        $contrato = Contrato::findOrFail($id);
-        $clientes = Cliente::all();
+        $contrato = Contrato::where('user_id', Auth::id())->findOrFail($id);
+        $clientes = Cliente::where('user_id', Auth::id())->get();
 
         return view("contratos.edit", compact("contrato", "clientes"));
     }
 
     public function update(UpdateContratoRequest $request, string $id)
     {
-        $contrato = Contrato::findOrFail($id);
+        $contrato = Contrato::where('user_id', Auth::id())->findOrFail($id);
 
         $dados = $request->only([
             'cliente_id',
@@ -78,7 +80,7 @@ class ContratoController extends Controller
 
     public function destroy(string $id)
     {
-        $contrato = Contrato::findOrFail($id);
+        $contrato = Contrato::where('user_id', Auth::id())->findOrFail($id);
         $contrato->delete();
 
         return redirect()->route('contratos.index')->with('deleted', true);
