@@ -71,22 +71,24 @@
                         <h3 class="text-xl font-bold text-[#003262] mb-5">Atualizações Recentes</h3>
                         <div class="space-y-3">
                             @forelse($atualizacoesRecentes as $atualizacao)
-                            <div class="flex items-start space-x-3 p-4 bg-gradient-to-r from-[#{{ $atualizacao['cor'] }}]/5 to-transparent rounded-lg border-l-4 border-[#{{ $atualizacao['cor'] }}]">
-                                <div class="w-10 h-10 bg-[#{{ $atualizacao['cor'] }}]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div class="flex items-start space-x-3 p-4 rounded-lg border-l-4"
+                                 style="border-color: #{{ $atualizacao['cor'] }}; background: linear-gradient(to right, #{{ $atualizacao['cor'] }}0D, transparent);">
+                                <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                                     style="background-color: #{{ $atualizacao['cor'] }}1A;">
                                     @if($atualizacao['icone'] == 'user')
-                                    <svg class="w-5 h-5 text-[#{{ $atualizacao['cor'] }}]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5" style="color: #{{ $atualizacao['cor'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                                     </svg>
                                     @elseif($atualizacao['icone'] == 'calendar')
-                                    <svg class="w-5 h-5 text-[#{{ $atualizacao['cor'] }}]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5" style="color: #{{ $atualizacao['cor'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                     </svg>
                                     @elseif($atualizacao['icone'] == 'document')
-                                    <svg class="w-5 h-5 text-[#{{ $atualizacao['cor'] }}]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5" style="color: #{{ $atualizacao['cor'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                                     </svg>
                                     @elseif($atualizacao['icone'] == 'check')
-                                    <svg class="w-5 h-5 text-[#{{ $atualizacao['cor'] }}]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg class="w-5 h-5" style="color: #{{ $atualizacao['cor'] }};" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
                                     </svg>
                                     @endif
@@ -154,10 +156,10 @@
                                 <div>
                                     <div class="flex items-center justify-between mb-2">
                                         <span class="text-sm font-medium text-[#003262]">{{ $tipo['tipo'] }}</span>
-                                        <span class="text-sm font-bold text-[#{{ $tipo['cor_inicio'] }}]">{{ $tipo['porcentagem'] }}%</span>
+                                        <span class="text-sm font-bold" style="color: #{{ $tipo['cor_inicio'] }};">{{ $tipo['porcentagem'] }}%</span>
                                     </div>
                                     <div class="w-full bg-[#003262]/10 rounded-full h-2">
-                                        <div class="bg-gradient-to-r from-[#{{ $tipo['cor_inicio'] }}] to-[#{{ $tipo['cor_fim'] }}] h-2 rounded-full" style="width: {{ $tipo['porcentagem'] }}%"></div>
+                                        <div class="h-2 rounded-full" style="width: {{ $tipo['porcentagem'] }}%; background: linear-gradient(to right, #{{ $tipo['cor_inicio'] }}, #{{ $tipo['cor_fim'] }});"></div>
                                     </div>
                                 </div>
                                 @empty

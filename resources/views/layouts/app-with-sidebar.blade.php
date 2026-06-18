@@ -13,6 +13,17 @@
     <aside class="hidden lg:flex lg:flex-shrink-0">
         <div class="flex flex-col w-72">
             <div class="flex flex-col flex-1 bg-gradient-to-b from-[#003262] to-[#001a3a] border-r border-[#2072AF]/20">
+                <!-- Logo na sidebar -->
+                <div class="px-4 py-6 border-b border-[#2072AF]/20">
+                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                        <img src="/images/logo.png" alt="Logo" class="w-10 h-10">
+                        <div>
+                            <p class="text-sm font-bold text-white">SJG</p>
+                            <p class="text-xs text-[#9EB9D4]">Sistema</p>
+                        </div>
+                    </a>
+                </div>
+
                 <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
                     
                     <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 px-4 py-3.5 rounded-xl @if(request()->route()->getName() === 'dashboard') bg-gradient-to-r from-[#2072AF] to-[#6699CC] text-white shadow-lg @else text-[#9EB9D4] hover:text-white hover:bg-white/5 transition-all @endif">
@@ -173,4 +184,8 @@
     from { opacity: 0; transform: scale(0.9); }
     to   { opacity: 1; transform: scale(1); }
 }
-.animate-zo
+.animate-zoom { animation: zoom .25s ease-out; }
+</style>
+
+</body>
+</html>
