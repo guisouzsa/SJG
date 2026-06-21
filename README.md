@@ -192,10 +192,6 @@ npm run dev
 # Iniciar o servidor local
 php artisan serve
 
-# Criar link para arquivos públicos
-php artisan storage:link
-```
-
 A aplicação estará disponível em:
 
 ```text
