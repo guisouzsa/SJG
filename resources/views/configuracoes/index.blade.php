@@ -13,6 +13,23 @@
     </div>
 
     <div class="p-6">
+
+        {{-- Informações do Sistema --}}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div class="bg-[#F0F6FF] rounded-lg p-4 border border-[#9EB9D4]/30">
+                <p class="text-xs text-[#6699CC] uppercase font-semibold mb-1">Versão do Sistema</p>
+                <p class="text-lg font-bold text-[#003262]">v2.4.1</p>
+            </div>
+            <div class="bg-[#F0F6FF] rounded-lg p-4 border border-[#9EB9D4]/30">
+                <p class="text-xs text-[#6699CC] uppercase font-semibold mb-1">Última Atualização</p>
+                <p class="text-lg font-bold text-[#003262]">23/06/2025</p>
+            </div>
+            <div class="bg-[#F0F6FF] rounded-lg p-4 border border-[#9EB9D4]/30">
+                <p class="text-xs text-[#6699CC] uppercase font-semibold mb-1">Ambiente</p>
+                <p class="text-lg font-bold text-[#003262]">Produção</p>
+            </div>
+        </div>
+
         <div class="text-center py-12">
             <svg class="w-16 h-16 text-[#9EB9D4] mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
